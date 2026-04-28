@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw_jobs_data
+    schema: public
+    tables:
+      - name: job_scout_db
+        columns:
+          - name: title
+            tests:
+              - not_null
+          - name: is_junior
+          - name: is_remote
+          - name: score
+          - name: link
+            tests:
+              - not_null
+
