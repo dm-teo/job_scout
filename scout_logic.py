@@ -1,8 +1,11 @@
 import re
 
+from sqlalchemy import desc
+
+
 def is_junk_title(job_data):
     title = job_data['title'].lower()
-    garbage_titles = ["frontend", "react", "css", "javascript", "senior", "lead", "architect"]
+    garbage_titles = ["frontend", "react", "css", "javascript", "senior", "lead", "architect", "head", "principal", "manager", "director", "phd", "vp"]
 
     if any(word in title for word in garbage_titles):
         return True
@@ -10,7 +13,13 @@ def is_junk_title(job_data):
 
 def analyze_job(job_data):
     title = job_data['title'].lower()
-    desc = job_data['desc'].lower()
+    if job_data['desc'] is None:
+        return None
+    else:
+        desc = job_data['desc'].lower()
+        restriction = ["zugriff", "verweigert"]
+        if any(word in desc for word in restriction):
+            return None
     score = 0
 
 

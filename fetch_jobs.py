@@ -56,6 +56,8 @@ while True:
                 continue
 
             prepared_job['desc'] = get_full_desc(prepared_job['link'])
+            if prepared_job['desc'] is None:
+                continue
 
             result = analyze_job(prepared_job)
             if result is not None and result['is_junior'] == True:
