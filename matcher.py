@@ -2,23 +2,28 @@ import json
 from sqlalchemy import create_engine, text
 import pandas as pd
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_matches(target_link):
+    DATABASE = os.getenv('DB_URL')
     profile_data = json.load(open('my_profile.json'))
 
-    engine = create_engine('postgresql://postgres:postmarsql062005_dbadmin@localhost:5432/job_scout_db')
+    engine = create_engine(DATABASE)
 
 
 
     query = text("""
-        select * from analytics.fct_job_leads where link = :target_link;
+        select * from analytics.fct_job_leads where link like :target_link;
     """)
 
-    df = pd.read_sql(query, engine, params={'target_link': target_link})
+    df = pd.read_sql(query, engine, params={'target_link': f"%{target_link}%"})
 
     if df.empty:
         print("Error: Job link not found in database")
-        return None
+        return None, None, None
 
     job_desc = df['description'].iloc[0].lower()
 
