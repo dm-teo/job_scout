@@ -3,7 +3,7 @@
 ## Overview
 An end-to-end data engineering system that automates the collection, transformation, and validation of job market data. The project is fully containerized and designed to run as a scheduled production workload on **Azure**.
 ## Data Lineage
-![Data Lineage Graph](images/lineage_graph.png)
+![Data Lineage Graph](docs/lineage_graph.png)
 
 ## Technical Stack
 *   **Infrastructure:** Docker & Docker Compose (Environment Isolation)
