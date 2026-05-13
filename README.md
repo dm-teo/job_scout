@@ -34,7 +34,7 @@ I was manually searching for jobs and feeling lost in the data. I realized that 
 
 *   **Why Docker?** I’ve had too many "it works on my machine" moments. I wanted to build this once and know it would run anywhere, whether on my laptop or a server.
 *   **Why dbt?** Raw API data is usually a mess. I needed to ensure that when I looked at the final "Job Leads" table, the duplicates were gone and the dates were standardized. SQL-based transformation is the most reliable way to do that.
-*   **Why the Shell Scripts?** I hate manual steps. I wanted a "One-Command" setup where I could trigger the whole sequence Fetch, Run, and Test, without thinking about it.
+*   **Why the Shell Scripts?** I wanted a "One-Command" setup where I could trigger the whole sequence Fetch, Run, and Test, without having to manually run each script.
 
 ### The Goal
 The goal wasn't just to find jobs; it was to build a professional-grade "mini-platform." This project allowed me to solve a personal frustration using the same infrastructure patterns (ELT, Containerization, Automated Testing) used by professional data teams.
