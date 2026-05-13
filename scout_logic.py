@@ -5,7 +5,7 @@ from sqlalchemy import desc
 
 def is_junk_title(job_data):
     title = job_data['title'].lower()
-    garbage_titles = ["frontend", "react", "css", "javascript", "senior", "lead", "architect", "head", "principal", "manager", "director", "phd", "vp"]
+    garbage_titles = ["frontend", "react", "css", "javascript", "senior", "lead", "architect", "head", "principal", "manager", "director", "phd", "vp", "scientist", "chemical", "laboratory", "expertin"]
 
     if any(word in title for word in garbage_titles):
         return True

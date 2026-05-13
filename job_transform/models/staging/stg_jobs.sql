@@ -1,4 +1,4 @@
-select initcap(title) as job_title, is_remote, link, description,
+select trim(initcap(title)) as job_title, is_remote, link, trim(description) as description,
     case
         when is_junior = True then 'Junior'
         else 'Not Specified'
