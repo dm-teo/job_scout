@@ -1,20 +1,19 @@
 # Cloud-Native Job Market Intelligence Pipeline
 
 ## Overview
-An end-to-end data engineering system that automates the collection, transformation, and validation of job market data. The project is fully containerized and designed to run as a scheduled production workload on **Azure**.
-## Data Lineage
+An end-to-end **Cloud-Native ELT Pipeline** designed to aggregate, normalize, and analyze job market data. This platform demonstrates a professional **Medallion Architecture**, moving data from raw API ingestion to analytics-ready "Marts" using the Modern Data Stack.## Data Lineage
 ![Data Lineage Graph](docs/lineage_graph.png)
 
 ## Technical Stack
-*   **Infrastructure:** Docker & Docker Compose (Environment Isolation)
-*   **Deployment:** Azure (Linux/IaaS)
-*   **Data Ingestion:** Python (REST API & JSON Parsing)
-*   **Transformation & Quality:** dbt (PostgreSQL)
-*   **Orchestration:** Bash scripting for automated pipeline execution
+*   **Orchestration:** Apache Airflow (LocalExecutor, Dockerized)
+*   **Transformation:** dbt (data build tool) - implementing Medallion Architecture
+*   **Infrastructure:** Docker & Docker Compose (Environment Parity)
+*   **Cloud & Database:** Azure PostgreSQL
+*   **Ingestion:** Python (REST API integration, JSON parsing, rate-limiting)
 
 ## Architecture & Features
-### 1. Automated Workflow Orchestration
-*   Developed shell scripts (`docker_run.sh`) to manage the end-to-end lifecycle: Ingestion -> Transformation -> Validation.
+### 1. Automated Airflow Orchestration
+*   Moved beyond manual scripts by implementing **Apache Airflow**. The pipeline is fully automated, handling dependencies and **automated retries** for API stability.
 *   Implemented **Automated Testing** using `dbt test` to ensure data quality and schema consistency before delivery.
 
 ### 2. Containerized Environment (Docker)
