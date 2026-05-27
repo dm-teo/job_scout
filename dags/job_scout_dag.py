@@ -30,4 +30,9 @@ with DAG(
         bash_command='cd /opt/airflow/job_scout_code/job_transform && dbt test --profiles-dir . --target prod'
     )
 
-    task_fetch >> task_dbt >> dbt_test
+    task_notify_success = BashOperator(
+        task_id='notify_discord_success',
+        bash_command='python3 /opt/airflow/job_scout_code/notifier.py'
+    )
+
+    task_fetch >> task_dbt >> dbt_test >> task_notify_success
